@@ -28,7 +28,21 @@ function simulatorInvesitments(){
 
     const name = document.forms['simulator']['name'].value
     const mensality = document.forms['simulator']['mensality'].value
+    const mensalityNumber = Number(mensality.replace(',','.').replace('R$',''))
+    const interestRate = document.forms['simulator']['rate'].value
+    const interestRateNumber = Number(interestRate.replace('%', ''))
     const timeInvestiment = document.forms['simulator']['timeYears'].value
+    const timeInvestimentNumber = Number(timeInvestiment)
+
+    const configApi = {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+
+      body: `{ "expr": "${mensalityNumber} * (((1 + ${interestRateNumber / 100}) ^ ${timeInvestimentNumber * 12} - 1) / ${interestRateNumber / 100})" }`
+    }
+
 
 
   })
