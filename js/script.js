@@ -116,7 +116,7 @@ function simulateInvesitments(){
         }   
     }
 
-    fetch('http://api.mathjs.org/v4/', configApi).then(transformedJson).then(apiData)
+    fetch('https://api.mathjs.org/v4/', configApi).then(transformedJson).then(apiData)
   })
 }
 
