@@ -45,7 +45,7 @@ function simulateInvesitments(){
     }
 
     const inputMensality = document.forms['simulator']['mensality']
-    const mensalityNumber = Number(inputMensality.value)
+    const mensalityNumber = Number(inputMensality.value.replace(',','.'))
 
     if(!inputMensality.value){
       verifyError = true
@@ -59,7 +59,7 @@ function simulateInvesitments(){
     }
 
     const inputInterestRate = document.forms['simulator']['rate']
-    const interestRateNumber = Number(inputInterestRate.value)
+    const interestRateNumber = Number(inputInterestRate.value.replace(',','.'))
 
     if(!inputInterestRate.value){
       verifyError = true
@@ -88,7 +88,7 @@ function simulateInvesitments(){
     }
 
     function apiData(data){
-     
+  
         if(!verifyError){
           firstPage.style.display = 'none'
           spinner.style.display = 'block'
@@ -120,13 +120,14 @@ function simulateInvesitments(){
   })
 }
 
-function onlyNumber(evt) {
-  const theEvent = evt || window.event;
-  let key = theEvent.keyCode || theEvent.which;
+function onlyNumber() {
+  const theEvent = window.event;
+  let key = theEvent.keyCode;
   key = String.fromCharCode( key );
-  const regex = /^[0-9.]+$/;
+
+  console.log(key)
+  const regex = /^[0-9.,]+$/;
   if( !regex.test(key) ) {
-     theEvent.returnValue = false;
      if(theEvent.preventDefault) theEvent.preventDefault();
   }
 }
