@@ -109,6 +109,10 @@ function simulateInvesitments(){
           btnSimulateAgain.addEventListener('click', function(){
             firstPage.style.display = 'flex'
             secondPage.style.display = 'none'
+
+            inputName.value = ''
+            inputMensality.value = ''
+            inputInterestRate.value = ''
           })
 
         }, 800)
