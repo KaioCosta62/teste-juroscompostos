@@ -8,24 +8,23 @@
   <title>Teste Juros Compostos</title>
 </head>
 <body>
-  <section class="simulator first-page">
-    <div class="container">
+  <section class="simulator container first-page">
       <h3>Money Investiments</h3>
-      <form action="" id="simulator">
+      <form action="" id="simulator" class="form-simulator">
         <h4>Simulator</h4>
         <div>
           <label for="nome">Nome</label>
-          <input type="text" name="nome" id="name">
+          <input type="text" name="nome" id="name" placeholder="Insira seu nome">
           <span></span>
         </div>
         <div>
           <label for="mensalidade">Mensalidade</label>
-          <input type="text" name="mensality" id="mensality" placeholder="Ex: R$ 250,50" onkeypress="onlyNumber()">
+          <input type="text" name="mensality" id="mensality" placeholder="Ex: Insira apenas números" onkeypress="onlyNumber()">
           <span></span>
         </div>
         <div>
           <label for="rate">Taxa de juros</label>
-          <input type="text" name="rate" id="rate" placeholder="Ex: 3%" onkeypress=" onlyNumber()">
+          <input type="text" name="rate" id="rate" placeholder="Insira apenas números" onkeypress=" onlyNumber()">
           <span></span>
         </div>
         <div>
@@ -36,11 +35,9 @@
         </div>
         <button type="submit">Simular</button>
       </form>
-    </div>
   </section>
 
-  <section class="second-page">
-    <button>Simular novamente</button>
+  <section class="simulator container second-page ">
   </section>
   <script src="js/script.js"></script>
 </body>

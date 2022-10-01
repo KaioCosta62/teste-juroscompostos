@@ -44,7 +44,7 @@ function simulateInvesitments(){
     }
 
     const inputMensality = document.forms['simulator']['mensality']
-    const mensalityNumber = Number(inputMensality.value.replace(',','.').replace('R$',''))
+    const mensalityNumber = Number(inputMensality.value)
 
     if(!inputMensality.value){
       verifyError = true
@@ -53,12 +53,12 @@ function simulateInvesitments(){
       span.innerHTML = 'Por favor, insira um valor de mensalidade'
     }else{
       inputMensality.classList.remove('error-input')
-      let span = inputName.nextElementSibling
+      let span = inputMensality.nextElementSibling
       span.innerHTML = ''
     }
 
     const inputInterestRate = document.forms['simulator']['rate']
-    const interestRateNumber = Number(inputInterestRate.value.replace('%', '').replace(',','.'))
+    const interestRateNumber = Number(inputInterestRate.value)
 
     if(!inputInterestRate.value){
       verifyError = true
@@ -89,28 +89,29 @@ function simulateInvesitments(){
     function apiData(data){
       if(!verifyError){
         let returnInvestiment = Number(data.result)
-        let estructureHTML = `
-        <div class="container">
+        let estructureHTMLSecondPage = `
           <h3>Money Investiments</h3>
-          <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
+          <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
           <button>Simular novamente</button>
-        </div>
         `
-        secondPage.innerHTML = estructureHTML
+        secondPage.innerHTML = estructureHTMLSecondPage
         firstPage.style.display = 'none'
-        secondPage.style.display = 'block'
+        secondPage.style.display = 'flex'
+
+        const btnSimulateAgain = document.querySelector('.second-page button')
+
+        btnSimulateAgain.addEventListener('click', function(){
+          firstPage.style.display = 'flex'
+          secondPage.style.display = 'none'
+        })
+
       }    
     }
 
     fetch('http://api.mathjs.org/v4/', configApi).then(transformedJson).then(apiData)
   })
 
-}
 
-function simulateAgain(){
-  const firstPage = document.querySelector('.first-page')
-  const secondPage = document.querySelector('.second-page')
-  const btnSimulateAgain = document.querySelector('.second-page button')
 }
 
 function onlyNumber(evt) {
@@ -126,5 +127,4 @@ function onlyNumber(evt) {
 
 yearsInvestiments()
 simulateInvesitments()
-simulateAgain()
 
