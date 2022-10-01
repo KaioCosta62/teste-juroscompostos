@@ -18,7 +18,6 @@ function yearsInvestiments(){
   }
 }
 
-
 function simulateInvesitments(){
   const form = document.querySelector('#simulator')
   const firstPage = document.querySelector('.first-page')
@@ -98,7 +97,8 @@ function simulateInvesitments(){
             let returnInvestiment = Number(data.result)
             let estructureHTMLSecondPage = `
             <h3>Money Investiments</h3>
-            <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
+            <p>
+              Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2).replace('.',',')} em ${timeInvestimentNumber} anos</p>
             <button>Simular novamente</button>
           `
           secondPage.innerHTML = estructureHTMLSecondPage
@@ -125,7 +125,6 @@ function onlyNumber() {
   let key = theEvent.keyCode;
   key = String.fromCharCode( key );
 
-  console.log(key)
   const regex = /^[0-9.,]+$/;
   if( !regex.test(key) ) {
      if(theEvent.preventDefault) theEvent.preventDefault();
