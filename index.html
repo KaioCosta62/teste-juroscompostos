@@ -16,19 +16,23 @@
         <div>
           <label for="nome">Nome</label>
           <input type="text" name="nome" id="name">
+          <span></span>
         </div>
         <div>
           <label for="mensalidade">Mensalidade</label>
-          <input type="text" name="mensality" id="mensality" placeholder="Ex: R$ 250,50">
+          <input type="text" name="mensality" id="mensality" placeholder="Ex: R$ 250,50" onkeypress="onlyNumber()">
+          <span></span>
         </div>
         <div>
           <label for="rate">Taxa de juros</label>
-          <input type="text" name="rate" id="rate" placeholder="Ex: 3%">
+          <input type="text" name="rate" id="rate" placeholder="Ex: 3%" onkeypress=" onlyNumber()">
+          <span></span>
         </div>
         <div>
           <label for="tempo">Tempo de investimento</label>
           <select name="timeYears" id="tempo" class="timeYears">
           </select>
+          <span></span>
         </div>
         <button type="submit">Simular</button>
       </form>
@@ -36,11 +40,7 @@
   </section>
 
   <section class="second-page">
-    <div class="container">
-      <h3>Money Investiments</h3>
-      <p>Olá Tobias, investindo R$20,00 todo mês, você terá R$ 509,65 em 2 anos</p>
-      <button>Simular novamente</button>
-    </div>
+    <button>Simular novamente</button>
   </section>
   <script src="js/script.js"></script>
 </body>
