@@ -88,14 +88,15 @@ function simulateInvesitments(){
     }
 
     function apiData(data){
-      spinner.style.display = 'block'
-      firstPage.style.display = 'none'
-      setTimeout(function(){
+     
         if(!verifyError){
-          spinner.style.display = 'none'
-        
-          let returnInvestiment = Number(data.result)
-          let estructureHTMLSecondPage = `
+          firstPage.style.display = 'none'
+          spinner.style.display = 'block'
+          
+          setTimeout(function(){
+            spinner.style.display = 'none'
+            let returnInvestiment = Number(data.result)
+            let estructureHTMLSecondPage = `
             <h3>Money Investiments</h3>
             <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
             <button>Simular novamente</button>
@@ -109,17 +110,14 @@ function simulateInvesitments(){
             firstPage.style.display = 'flex'
             secondPage.style.display = 'none'
           })
-  
-        }    
-      },600)
 
-  
+        }, 800)
+          
+        }   
     }
 
     fetch('http://api.mathjs.org/v4/', configApi).then(transformedJson).then(apiData)
   })
-
-
 }
 
 function onlyNumber(evt) {
