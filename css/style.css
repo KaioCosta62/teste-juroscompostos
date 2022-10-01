@@ -94,3 +94,19 @@ button:hover{
   margin-bottom: 20px;
   line-height: 1.5;
 }
+
+.spinner{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  border-top: 5px solid gold;
+  animation: spinner 500ms infinite linear;
+  display: none;
+}
+
+@keyframes spinner {
+  from{
+    transform: rotate(360deg);
+  }
+}

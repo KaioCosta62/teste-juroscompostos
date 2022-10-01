@@ -23,6 +23,7 @@ function simulateInvesitments(){
   const form = document.querySelector('#simulator')
   const firstPage = document.querySelector('.first-page')
   const secondPage = document.querySelector('.second-page')
+  const spinner = document.querySelector('.spinner')
 
   form.addEventListener('submit', function(e){
     e.preventDefault()
@@ -87,25 +88,32 @@ function simulateInvesitments(){
     }
 
     function apiData(data){
-      if(!verifyError){
-        let returnInvestiment = Number(data.result)
-        let estructureHTMLSecondPage = `
-          <h3>Money Investiments</h3>
-          <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
-          <button>Simular novamente</button>
-        `
-        secondPage.innerHTML = estructureHTMLSecondPage
-        firstPage.style.display = 'none'
-        secondPage.style.display = 'flex'
+      spinner.style.display = 'block'
+      firstPage.style.display = 'none'
+      setTimeout(function(){
+        if(!verifyError){
+          spinner.style.display = 'none'
+        
+          let returnInvestiment = Number(data.result)
+          let estructureHTMLSecondPage = `
+            <h3>Money Investiments</h3>
+            <p>Olá ${inputName.value}, investindo R$ ${mensalityNumber} reais todo mês, você terá R$ ${returnInvestiment.toFixed(2)} em ${timeInvestimentNumber} anos</p>
+            <button>Simular novamente</button>
+          `
+          secondPage.innerHTML = estructureHTMLSecondPage
+          secondPage.style.display = 'flex'
+  
+          const btnSimulateAgain = document.querySelector('.second-page button')
+  
+          btnSimulateAgain.addEventListener('click', function(){
+            firstPage.style.display = 'flex'
+            secondPage.style.display = 'none'
+          })
+  
+        }    
+      },600)
 
-        const btnSimulateAgain = document.querySelector('.second-page button')
-
-        btnSimulateAgain.addEventListener('click', function(){
-          firstPage.style.display = 'flex'
-          secondPage.style.display = 'none'
-        })
-
-      }    
+  
     }
 
     fetch('http://api.mathjs.org/v4/', configApi).then(transformedJson).then(apiData)
