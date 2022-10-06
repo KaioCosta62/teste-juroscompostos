@@ -5,7 +5,7 @@ Projeto baseado em uma vaga de programador Front-End júnior, onde recebemos o v
 ## Referência
 
  - [Link do Desafio](https://github.com/thiagocontaparatestes/testes-vaga-emprego/blob/main/teste-juros-compostos.md)
- 
+ - [Live preview](https://kaiocosta62.github.io/teste-juroscompostos/)
 
 ## Autores
 
